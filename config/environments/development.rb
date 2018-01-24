@@ -54,4 +54,14 @@ Rails.application.configure do
 
   #In production, :host should be set to the actual host of your application.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.mailgun.org',
+  port: 587,
+  domain: "sandboxfc5503da5eba409abe32d13cb42cd76e.mailgun.org",
+  authentication: 'plain',
+  user_name: "postmaster@sandboxfc5503da5eba409abe32d13cb42cd76e.mailgun.org",
+  password: "4d315566b8bc4e0e0adcf70bf18a3ee7"
+  }
 end
