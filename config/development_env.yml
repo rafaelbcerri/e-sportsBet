@@ -1,0 +1,6 @@
+POSTGRES_USER: 'postgres'
+POSTGRES_PASSWORD: '123456'
+POSTGRES_HOST: 'db'
+MAILGUN_DOMAIN: 'sandboxfc5503da5eba409abe32d13cb42cd76e.mailgun.org'
+MAILGUN_USER_NAME: 'postmaster@sandboxfc5503da5eba409abe32d13cb42cd76e.mailgun.org'
+MAILGUN_PASSWORD: '4d315566b8bc4e0e0adcf70bf18a3ee7'
