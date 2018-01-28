@@ -82,5 +82,5 @@ test:
 #
 production:
   <<: *default
-  database: e-sportsBet_production
+  database: <%= ENV['POSTGRES_DATABASE'] %>
   url: <%= ENV['DATABASE_URL'] %>
