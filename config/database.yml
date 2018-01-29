@@ -20,7 +20,7 @@ default: &default
   host: <%= ENV["POSTGRES_HOST"] %>
   username: <%= ENV["POSTGRES_USER"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
-  pool: 5
+  pool: 20
 
 development:
   <<: *default
