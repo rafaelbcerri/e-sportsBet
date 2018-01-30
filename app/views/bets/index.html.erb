@@ -2,7 +2,8 @@
   <div class="d-flex flex-column" style="margin-top: 150px;">
     <h1 class="d-flex justify-content-center ">Olá, <%= current_user.name %></h1>
     <div class="d-flex justify-content-center ">
-      <%= link_to "Não está funcionando o botão de deletar", user_registration_path, method: :delete %>
+      <%= link_to "Deletar conta", user_registration_path, method: :delete %>
+      <%= link_to "Editar conta", edit_user_registration %>
     </div>
   </div>
 </div>
