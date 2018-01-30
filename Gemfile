@@ -40,6 +40,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'rails_admin', '~> 1.2'
 gem 'rails_12factor'
 gem 'discard'
+gem 'newrelic_rpm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
