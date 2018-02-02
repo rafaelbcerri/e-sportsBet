@@ -60,8 +60,8 @@ Rails.application.configure do
   address: ENV['MAILGUN_SMTP_SERVER'],
   port: ENV['MAILGUN_SMTP_PORT'],
   user_name: ENV['MAILGUN_SMTP_LOGIN'],
-  password: ENV["MAILGUN_SMTP_PASSWORD"],
-  domain: ENV["MAILGUN_DOMAIN"],
+  password: ENV['MAILGUN_SMTP_PASSWORD'],
+  domain: ENV['MAILGUN_DOMAIN'],
   authentication: 'plain'
   }
 end
