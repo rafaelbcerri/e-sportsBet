@@ -7,6 +7,8 @@
     <div class="form-group">
       <%= f.label :name %><br />
       <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
+      <%= f.label :birthday %><br />
+      <%= f.date_field :birthday, autocomplete: "off", class: "form-control" %>
       <%= f.label :email %><br />
       <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
       <%= f.label :password %>
