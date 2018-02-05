@@ -282,6 +282,6 @@ Devise.setup do |config|
     scope: 'email, public_profile, user_birthday',
     secure_image_url: true,
     auth_type: 'https',
-    info_fields: 'email, name, picture, age_range',
+    info_fields: 'email, name, picture, age_range, birthday',
     callback_url: 'https://e-sportsbet.herokuapp.com/users/auth/facebook/callback'
 end
