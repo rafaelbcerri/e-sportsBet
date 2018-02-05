@@ -278,5 +278,8 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   #Add your ID and secret here #ID first, secret second
-  config.omniauth :facebook, "206675439908359", "f5454717807ccde177892ba2662365f2", callback_url: "https://e-sportsbet.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'],
+   scope: 'email, public_profile, user_birthday',
+   info_fields: 'email, name, picture, age_range, user_birthday',
+   callback_url: 'https://e-sportsbet.herokuapp.com/users/auth/facebook/callback'
 end
