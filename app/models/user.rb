@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include Discard::Model
+  include ActionView::Helpers::Users::RegistrationsHelper
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -7,14 +8,14 @@ class User < ApplicationRecord
 
    def self.from_omniauth(auth)
      birthday = auth.extra.raw_info.birthday.to_date
-     return "younger" if Users::RegistrationsHelper::user_age(birthday) < 18
+     return "younger" if user_age(birthday) < 18
 
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
        user.email = auth.info.email
        user.password = Devise.friendly_token[0,20]
        user.name = auth.info.name
        user.image = auth.info.image
-       user.birthday = Users::RegistrationsHelper::brazilian_date(birthday)
+       user.birthday = brazilian_date(birthday)
      end
    end
 
