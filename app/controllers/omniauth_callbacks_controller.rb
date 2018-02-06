@@ -2,7 +2,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
       @user = User.from_omniauth(request.env["omniauth.auth"])
 
-      if @user.is_a? String && @user.eql?("younger")
+      if @user.is_a?(String) && @user.eql?("younger")
         redirect_to root_path
         set_flash_message(:notice, :younger, kind: "Facebook") if is_navigational_format?
       elsif @user.persisted?
