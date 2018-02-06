@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
    def self.from_omniauth(auth)
      puts "1" * 20
-     puts auth.extra.raw_info.
-     puts auth.extra.raw_info.birthday
+     puts auth.extra.raw_info
+     puts auth.extra
      birthday = auth.extra.raw_info.birthday.to_date
      puts "2" * 20
      puts birthday
