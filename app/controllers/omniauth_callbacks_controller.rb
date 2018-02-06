@@ -4,7 +4,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       if @user.is_a?(String) && @user.eql?("younger")
         redirect_to root_path
-        set_flash_message(:notice, :younger, kind: "Facebook")
+        set_flash_message(:notice, :younger, kind: "Facebook") if is_navigational_format?
       elsif @user.persisted?
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
