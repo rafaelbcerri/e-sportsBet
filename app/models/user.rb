@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
    def self.from_omniauth(auth)
      birthday = Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%y')
-     user_age(birthday)
+     puts birthday
+     puts user_age(birthday) 
      return "younger" if user_age(birthday) < 18
 
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
