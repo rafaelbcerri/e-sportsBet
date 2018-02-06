@@ -7,18 +7,15 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
    def self.from_omniauth(auth)
-     puts "****" * 20
-     puts auth
-     puts auth.extra
-     puts auth.extra.birthday
-     return "younger" if user_age(auth.extra.birthday.to_date) < 18
+     birthday = auth.extra.raw_info.birthday.to_date
+     return "younger" if user_age(birthday) < 18
 
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
        user.email = auth.info.email
        user.password = Devise.friendly_token[0,20]
        user.name = auth.info.name
        user.image = auth.info.image
-       user.birthday = auth.extra.birthday
+       user.birthday = brazilian_date(birthday)
      end
    end
 
