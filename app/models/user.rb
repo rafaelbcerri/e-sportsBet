@@ -6,8 +6,14 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
    def self.from_omniauth(auth)
+     puts "1" * 20
+     puts auth.extra.raw_info.birthday.to_date
      birthday = auth.extra.raw_info.birthday.to_date
+     puts "2" * 20
+     puts birthday
+     user_age(birthday)
      return "younger" if user_age(birthday) < 18
+     puts "3" * 20
 
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
        user.email = auth.info.email
