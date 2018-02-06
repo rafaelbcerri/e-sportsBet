@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Discard::Model
-  include ActionView::Helpers::Users::RegistrationsHelper
+  include DateHelper
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
