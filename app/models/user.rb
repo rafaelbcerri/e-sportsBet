@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   include Discard::Model
-  include DateHelper
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -15,7 +14,7 @@ class User < ApplicationRecord
        user.password = Devise.friendly_token[0,20]
        user.name = auth.info.name
        user.image = auth.info.image
-       user.birthday = brazilian_date(birthday)
+       user.birthday = Dates.brazilian(birthday)
      end
    end
 
@@ -27,5 +26,11 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def user_age(birthday)
+    age = Date.today.year - birthday.year
+    age -= 1 if Date.today < birthday + age.years
+    age
   end
 end
