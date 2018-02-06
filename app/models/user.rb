@@ -29,7 +29,7 @@ class User < ApplicationRecord
     end
   end
 
-  def user_age(birthday)
+  def self.user_age(birthday)
     age = Date.today.year - birthday.year
     age -= 1 if Date.today < birthday + age.years
     age
