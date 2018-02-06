@@ -7,8 +7,6 @@ class User < ApplicationRecord
 
    def self.from_omniauth(auth)
      birthday = Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y')
-     puts birthday
-     puts user_age(birthday)
      return "younger" if user_age(birthday) < 18
 
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -16,7 +14,7 @@ class User < ApplicationRecord
        user.password = Devise.friendly_token[0,20]
        user.name = auth.info.name
        user.image = auth.info.image
-       user.birthday = Dates.brazilian(birthday)
+       user.birthday = birthday.strftime("%d/%m/%Y")
      end
    end
 
