@@ -1,6 +1,8 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
       @user = User.from_omniauth(request.env["omniauth.auth"])
+      puts @user
+      puts @user.is_a?(String)
 
       if @user.is_a?(String) && @user.eql?("younger")
         redirect_to root_path
