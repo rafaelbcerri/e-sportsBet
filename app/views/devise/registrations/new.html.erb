@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#user_birthday').datepicker({format: 'dd/mm/yyyy'});
+  });
+  </script>
+<% end %>
+
 <div class="d-flex justify-content-center" >
   <div class="card" style="padding: 30px; margin-top: 50px;">
     <h3 class="card-title">Sign up</h3>
@@ -8,7 +16,7 @@
       <%= f.label :name %><br />
       <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
       <%= f.label :birthday %><br />
-      <%= f.date_field :birthday, autocomplete: "off", class: "form-control" %>
+      <%= f.text_field :birthday, autocomplete: "off", class: "form-control", "data-provide": 'datepicker', "data-behaviour": 'datepicker', placeholder: "dd/mm/yyyy", :data => {:mask=> 'dd/mm/yyyy'}%>
       <%= f.label :email %><br />
       <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
       <%= f.label :password %>
@@ -23,4 +31,4 @@
     <%= render "devise/shared/links" %>
     <% end %>
   </div>
-<div>
+</div>
