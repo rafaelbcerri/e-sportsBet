@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Discard::Model
 
-  before_create :age_restriction
+  validate :age_restriction
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -46,7 +46,8 @@ class User < ApplicationRecord
 
   def age_restriction
     if (self.birthday.to_date + 18.years) > Date.today
-      errors.add :birthday, 'must be older than 18'
+      errors.add(:birthday, "Too young to use this platform.")
+      return false;
     end
   end
 end
